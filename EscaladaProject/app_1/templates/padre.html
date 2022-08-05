@@ -46,6 +46,7 @@
             </div>
         </header>
         <!-- About-->
+        
         <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
@@ -65,6 +66,11 @@
             </div>
         </section>
         <!-- Projects-->
+        
+        {% block bloquesecciones %}
+            
+        
+            
         <section class="projects-section bg-light" id="projects">
             <div class="container px-4 px-lg-5">
                 <!-- Featured Project Row-->
@@ -110,10 +116,11 @@
             </div>
         </section>
         
+        {% endblock bloquesecciones %}
         
-        {% block bloquecambia %}
+        {% block bloqueinicio %}
             
-        {% endblock bloquecambia %}
+        {% endblock bloqueinicio %}
             
         
         <!-- Contact-->
@@ -123,21 +130,21 @@
                     <div class="col-md-4 mb-3 mb-md-0">
                         <div class="card py-4 h-100">
                             <div class="card-body text-center">
-                                <a class="btn btn-primary" href="#about">CURSOS</a>
+                                <a class="btn btn-primary" href="{% url 'Cursos' %}">CURSOS</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-3 mb-md-0">
                         <div class="card py-4 h-100">
                             <div class="card-body text-center">
-                                <a class="btn btn-primary" href="#about">PROFESORES</a>
+                                <a class="btn btn-primary" href="{% url 'Profesores' %}">PROFESORES</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 mb-3 mb-md-0">
                         <div class="card py-4 h-100">
                             <div class="card-body text-center">
-                                <a class="btn btn-primary" href="#about">ALUMNOS</a>
+                                <a class="btn btn-primary" href="{% url 'Alumnos' %}">ALUMNOS</a>
                             </div>
                         </div>
                     </div>
