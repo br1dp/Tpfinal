@@ -106,18 +106,41 @@ def busquedacursos(request):
 
     return render(request,'busquedacursos.html')
 
-def buscarcursos(request):
+def resultadocursos(request):
 
     if request.GET['nivel']:
 
         nivel = request.GET['nivel']
 
-        cursos = Cursos.objects.filter(cursos__ivcontains = nivel)
+        niveles = Cursos.objects.filter(nivel__icontains = nivel)
 
 
-        return render(request,'resultadocurso.html',{'cursos':cursos,'nivel':nivel})
+        return render(request,'resultadocurso.html',{'niveles':niveles,'nivel':nivel})
 
-    
-    else:
+def busquedaalumnos(request):
 
-        return render(request,'error.html')
+    return render(request,'busquedaalumnos.html')
+
+def resultadoalumnos(request):
+
+    if request.GET['nombre']:
+
+        nombre = request.GET['nombre']
+
+        nombres = Alumnos.objects.filter(nombre__icontains = nombre)
+
+        return render (request,'resultadoalumnos.html',{'nombres':nombres,'nombre':nombre})
+
+def busquedaprofesores(request):
+
+    return render(request,'busquedaprofesores.html')
+
+def resultadoprofesores(request):
+
+    if request.GET['nombre']:
+
+        nombre = request.GET['nombre']
+
+        nombres = Profesores.objects.filter(nombre__icontains = nombre)
+
+        return render (request,'resultadoprofesores.html',{'nombres':nombres,'nombre':nombre})

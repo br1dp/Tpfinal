@@ -28,6 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Profesores' %}">Profesores</a></li>
                                             
                     </ul>
                 </div>
@@ -54,7 +55,7 @@
                         <form class="text-white mb-4" action="{% url 'ProfesoresFormulario' %}" method = "POST"> {% csrf_token %}
 
                             <h2 class="text-white mb-4" >Ingrese los datos del profesor que serán guardados en la base de datos:</h2><br><br>
-                            <p>* Nombre : Nombre del profesor <br><br> * Apellido : Apellido del profesor <br><br> * Nivel: Basico - Intermedio - Avanzado <br><br> * Email: Email del profesor</p>
+                            <p>* NOMBRE : Nombre del profesor <br><br> * APELLIDO : Apellido del profesor <br><br> * NIVEL: Basico - Intermedio - Avanzado <br><br> * EMAIL: Email del profesor</p>
                             <br><br>
 
                             {{profesoresformulario.as_p}}

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -28,7 +29,8 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Alumnos' %}">Alumnos</a></li>                    
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Profesores' %}">Profesores</a></li>
+                                            
                     </ul>
                 </div>
             </div>
@@ -48,20 +50,33 @@
         <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h1 class="text-white mb-4">Seccion - Agregar Alumnos</h1>
+                    <div class="text-white mb-4">
+                        <h1 class="text-white mb-4">Seccion - Resultado de la busqueda:</h1>
                         
-                        <form class="text-white mb-4" action="{% url 'AlumnosFormulario' %}" method = "POST"> {% csrf_token %}
+                        
+                            <h3 class="text-white mb-4" >Resultado de la busqueda por nombre: {{nombre}}</h3><br><br>
 
-                            <h2 class="text-white mb-4" >Ingrese los datos del alumno que serán guardados en la base de datos:</h2><br><br>
-                            <p>* NOMBRE : Nombre del alumno <br><br> * APELLIDO : Apellido del alumno <br><br> * EDAD: Edad del alumno <br><br> * EMAIL: Email del alumno</p>
-                            <br><br>
+                            
+                            {% if nombres %}
 
-                            {{alumnosformulario.as_p}}
+                            <ul>
 
-                            <input class="btn btn-primary" type="submit" value="Guardar">
+                                
+                                {% for i in nombres %}
 
-                        </form>
+                                 -> NOMBRE: {{i.nombre}} <br>  APELLIDO: {{i.apellido}} <br> NIVEL: {{i.nivel}} <br> CONTACTO: {{i.email}} <br><br><br>
+                                    
+                                {% endfor %}
+                                    
+                            </ul>
+                                {% else %}
+
+                                <h4>NO SE ENCONTRARON LOS DATOS</h4>
+
+                            {% endif %}
+                                
+
+                            
                         
                     </div>
                 </div>

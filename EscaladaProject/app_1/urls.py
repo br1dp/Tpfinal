@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.urls import path
-from app_1.views import buscarcursos
 
+
+from app_1.views import resultadoprofesores
+from app_1.views import busquedaprofesores
+from app_1.views import resultadoalumnos
+from app_1.views import busquedaalumnos
+from app_1.views import resultadocursos
 from app_1.views import busquedacursos
 from app_1.views import alumnosformulario
 from app_1.views import alumnos, cursos, profesores,cursoformulario,profesoresformulario
@@ -13,8 +18,12 @@ urlpatterns = [
     path('alumnos/',alumnos,name = 'Alumnos'),
     path('profesores/',profesores,name = 'Profesores'),
     path('cursoformulario/',cursoformulario,name = 'CursoFormulario'),
-    path('busquedacursos/',buscarcursos,name = 'BuscarCursos'),
+    path('busquedacursos/',busquedacursos,name = 'BuscarCursos'),
+    path('resultadocursos/',resultadocursos,name = 'ResultadoCursos'),
     path('alumnosformulario/',alumnosformulario,name = 'AlumnosFormulario'),
-    path('busquedaalumnos/',inicio,name = 'ListaAlumnos'),
+    path('busquedaalumnos/',busquedaalumnos,name = 'BusquedaAlumnos'),
+    path('resultadoalumnos/',resultadoalumnos,name = 'ResultadoAlumnos'),
     path('profesoresformulario/',profesoresformulario,name = 'ProfesoresFormulario'),
-]
+    path('busquedaprofesores/',busquedaprofesores,name = 'BusquedaProfesores'),
+    path('resultadoprofesores/',resultadoprofesores,name = 'ResultadoProfesores'),
+    ]

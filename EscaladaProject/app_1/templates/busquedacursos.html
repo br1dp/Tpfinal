@@ -28,6 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Cursos' %}">Cursos</a></li>
                                             
                     </ul>
                 </div>
@@ -51,15 +52,15 @@
                     <div class="col-lg-8">
                         <h1 class="text-white mb-4">Seccion - Buscar Cursos</h1>
                         
-                        <form class="text-white mb-4" action="{% url 'BuscarCursos' %}" method = "GET"> {% csrf_token %}
+                        <form class="text-white mb-4" action="{% url 'ResultadoCursos' %}" method = "GET"> {% csrf_token %}
 
                             <h2 class="text-white mb-4" >Ingrese los datos del curso que desea buscar:</h2><br><br>
-                            <p>* Buscar por Niveles : Basico - Intermedio - Avanzado <br><br> * Buscar por Horarios : 9 - 11 - 15 - 17 - 19 <br><br> * Buscar por Profesores: Nombre y apellido del profesor</p>
+                            <p>* BUSCAR POR NIVELES : Basico - Intermedio - Avanzado <br><br></p>
                             <br><br>
 
-                            <p>Busqueda: <input type="text" name="curso"></p>
+                            <p>Busqueda: <input type="text" name="nivel"></p>
 
-                            <input class="btn btn-primary" type="submit" name="Buscar">
+                            <input class="btn btn-primary" type="submit" value="Buscar">
 
                         </form>
                         

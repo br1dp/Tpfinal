@@ -28,6 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Cursos' %}">Cursos</a></li>
                                             
                     </ul>
                 </div>
@@ -54,7 +55,7 @@
                         <form class="text-white mb-4" action="{% url 'CursoFormulario' %}" method = "POST"> {% csrf_token %}
 
                             <h2 class="text-white mb-4" >Ingrese los datos del curso que serán guardados en la base de datos:</h2><br><br>
-                            <p>* Niveles : Basico - Intermedio - Avanzado <br><br> * Horarios : 9 - 11 - 15 - 17 - 19 <br><br> * Profesores: Nombre y apellido del profesor</p>
+                            <p>* NIVELES : Basico - Intermedio - Avanzado <br><br> * HORARIOS : 9 - 11 - 15 - 17 - 19 <br><br> * PROFESIORES: Nombre y apellido del profesor</p>
                             <br><br><br><br>
 
                             {{cursoformulario.as_p}}

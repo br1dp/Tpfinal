@@ -28,6 +28,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Cursos' %}">Cursos</a></li>
                                             
                     </ul>
                 </div>
@@ -48,29 +49,28 @@
         <section class="about-section text-center" id="about">
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8">
-                        <h1 class="text-white mb-4">Seccion - Buscar Cursos</h1>
+                    <div class="text-white mb-4">
+                        <h1 class="text-white mb-4">Seccion - Resultado de la busqueda:</h1>
                         
-                        <form class="text-white mb-4" action="{% url 'BuscarCursos' %}" method = "GET"> {% csrf_token %}
-
-                            <h2 class="text-white mb-4" >Resultado de la busqueda: {{nivel}}</h2><br><br>
+                        
+                            <h3 class="text-white mb-4" >Resultado de la busqueda por niveles: {{nivel}}</h3><br><br>
 
                             
-                            {% if cursos %}
+                            {% if niveles %}
 
                             <ul>
 
                                 
-                                {% for curso in cursos in  %}
+                                {% for i in niveles %}
 
-                                <li> Nivel: {{curso.curso}} - con el profesor: {{curso.profesor}}</li>
+                                 -> NIVEL: {{i.nivel}} <br>  PROFESOR: {{i.profesor}} <br> HORARIO: {{i.horario}} hs. <br><br>
                                     
                                 {% endfor %}
                                     
                             </ul>
                                 {% else %}
 
-                                <p>No hubieron coincidencias</p>
+                                <h4>NO SE ENCONTRARON LOS DATOS</h4>
 
                             {% endif %}
                                 
