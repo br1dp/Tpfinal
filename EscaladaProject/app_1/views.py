@@ -6,6 +6,8 @@ from app_1.models import Profesores
 from app_1.forms import AlumnosFormulario
 from app_1.models import Alumnos
 
+from django.db.models import Q
+
 from app_1.forms import CursoFormulario
 from app_1.models import Cursos
 
@@ -108,14 +110,17 @@ def busquedacursos(request):
 
 def resultadocursos(request):
 
-    if request.GET['nivel']:
-
+    if request.method == "GET":
+        
         nivel = request.GET['nivel']
 
-        niveles = Cursos.objects.filter(nivel__icontains = nivel)
+        if nivel != "":
+          niveles = Cursos.objects.filter( Q(nivel__icontains = nivel) | Q(profesor__icontains = nivel) | Q (horario__icontains = nivel) ).values()
 
+          return render(request,'resultadocurso.html',{'niveles':niveles})
 
-        return render(request,'resultadocurso.html',{'niveles':niveles,'nivel':nivel})
+    niveles = Cursos.objects.all()
+    return render(request, "alumnos.html",{"niveles": niveles})
 
 def busquedaalumnos(request):
 

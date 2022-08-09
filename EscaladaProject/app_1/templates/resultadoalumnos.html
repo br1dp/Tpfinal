@@ -7,10 +7,8 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="text-white mb-4">
-                        <h1 class="text-white mb-4">Seccion - Resultado de la busqueda:</h1>
                         
-                        
-                            <h3 class="text-white mb-4" >Resultado de la busqueda por nombre: {{nombre}}</h3><br><br>
+                            <h1 class="text-white mb-4" >Resultado de la busqueda por nombre: {{nombre}}</h1><br><br>
                          
 
                             {% if nombres %}
@@ -21,15 +19,14 @@
                                  
                                  {% endfor %} 
                                   
+                                 <a class="btn btn-primary" href="{% url 'Alumnos' %}">VOLVER</a>
                             {% else %}
 
                                 <h4>NO SE ENCONTRARON LOS DATOS</h4>
 
-                                <a class="btn btn-primary" href="{% url 'Alumnos' %}">ALUMNOS</a>
+                                <a class="btn btn-primary" href="{% url 'Alumnos' %}">VOLVER A ALUMNOS</a>
 
                             {% endif %}
-                            
-                        
                     </div>
                 </div>
                 <img class="img-fluid" src="{% static 'assets/img/montaña1.png' %}" alt="..." />

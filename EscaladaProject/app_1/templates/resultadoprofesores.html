@@ -8,10 +8,8 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="text-white mb-4">
-                        <h1 class="text-white mb-4">Seccion - Resultado de la busqueda:</h1>
                         
-                        
-                            <h3 class="text-white mb-4" >Resultado de la busqueda por nombre: {{nombre}}</h3><br><br>
+                        <h1 class="text-white mb-4" >Resultado de la busqueda por nombre: {{nombre}}</h1><br><br>
 
                             
                             {% if nombres %}
@@ -21,18 +19,22 @@
                                 
                                 {% for i in nombres %}
 
-                                 -> NOMBRE: {{i.nombre}} <br>  APELLIDO: {{i.apellido}} <br> NIVEL: {{i.nivel}} <br> CONTACTO: {{i.email}} <br><br><br>
-                                    
+                                 <br>-> NOMBRE: {{i.nombre}} <br>  ->APELLIDO: {{i.apellido}} <br> ->NIVEL: {{i.nivel}} <br> ->CONTACTO: {{i.email}} <br><br><br>
+                                 
+                                
                                 {% endfor %}
-                                    
+                                
+                                <a class="btn btn-primary" href="{% url 'Profesores' %}">VOLVER</a>
                             </ul>
                                 {% else %}
 
                                 <h4>NO SE ENCONTRARON LOS DATOS</h4>
 
-                                <a class="btn btn-primary" href="{% url 'Profesores' %}">PROFESORES</a>
+                                <a class="btn btn-primary" href="{% url 'Profesores' %}">VOLVER A PROFESORES</a>
 
                             {% endif %}
+                             
+                        
                     </div>
                 </div>
                 <img class="img-fluid" src="{% static 'assets/img/montaña1.png' %}" alt="..." />

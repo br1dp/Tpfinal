@@ -8,33 +8,29 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="text-white mb-4">
-                        <h1 class="text-white mb-4">Seccion - Resultado de la busqueda:</h1>
                         
-                        
-                            <h3 class="text-white mb-4" >Resultado de la busqueda por niveles: {{nivel}}</h3><br><br>
+                        <h1 class="text-white mb-4" >Resultado de la busqueda por niveles: {{nivel}}</h1><br><br>
 
-                            
                             {% if niveles %}
 
                             <ul>
 
-                                
                                 {% for i in niveles %}
 
-                                 -> NIVEL: {{i.nivel}} <br>  PROFESOR: {{i.profesor}} <br> HORARIO: {{i.horario}} hs. <br><br>
-                                    
+                                 -> NIVEL: {{i.nivel}} <br>  PROFESOR: {{i.profesor}} <br> HORARIO: {{i.horario}} hs. <br><br><br>
+                                 
                                 {% endfor %}
-                                    
+                                <a class="btn btn-primary" href="{% url 'Cursos' %}">VOLVER</a>
                             </ul>
                                 {% else %}
 
                                 <h4>NO SE ENCONTRARON LOS DATOS</h4>
 
-                                <a class="btn btn-primary" href="{% url 'Cursos' %}">CURSOS</a>
+                                <a class="btn btn-primary" href="{% url 'Cursos' %}">VOLVER A CURSOS</a>
 
                             {% endif %}
                         
-                    </div>
+                    </div> 
                 </div>
                 <img class="img-fluid" src="{% static 'assets/img/montaña1.png' %}" alt="..." />
             </div>
