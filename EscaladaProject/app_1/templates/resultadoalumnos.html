@@ -54,27 +54,23 @@
                         
                         
                             <h3 class="text-white mb-4" >Resultado de la busqueda por nombre: {{nombre}}</h3><br><br>
+                         
 
-                            
                             {% if nombres %}
 
-                            <ul>
-
-                                
-                                {% for i in nombres %}
-
-                                 -> NOMBRE: {{i.nombre}} <br>  APELLIDO: {{i.apellido}}  <br> CONTACTO: {{i.email}}<br><br><br>
-                                    
-                                {% endfor %}
-                                    
-                            </ul>
-                                {% else %}
+                                {% for i in nombres%}
+                                  
+                                 <br> ->NOMBRE: {{i.nombre}} <br>  ->APELLIDO: {{i.apellido}}  <br> ->CONTACTO: {{i.email}}<br><br><br>
+                                 
+                                 {% endfor %} 
+                                  
+                            {% else %}
 
                                 <h4>NO SE ENCONTRARON LOS DATOS</h4>
 
-                            {% endif %}
-                                
+                                <a class="btn btn-primary" href="{% url 'Alumnos' %}">ALUMNOS</a>
 
+                            {% endif %}
                             
                         
                     </div>
