@@ -49,15 +49,15 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h1 class="text-white mb-4">Seccion - Agregar Curso</h1>
+                        <h1 class="text-white mb-4">Seccion - Agregar Alumnos</h1>
                         
-                        <form class="text-white mb-4" action="{% url 'CursoFormulario' %}" method = "POST"> {% csrf_token %}
+                        <form class="text-white mb-4" action="{% url 'AlumnosFormulario' %}" method = "POST"> {% csrf_token %}
 
-                            <h2 class="text-white mb-4" >Ingrese los datos del curso que serán guardados en la base de datos:</h2><br><br>
-                            <p>* Niveles : Basico - Intermedio - Avanzado <br><br> * Horarios : 9 - 11 - 15 - 17 - 19 <br><br> * Profesores: Nombre y apellido del profesor</p>
-                            <br><br><br><br>
+                            <h2 class="text-white mb-4" >Ingrese los datos del alumno que serán guardados en la base de datos:</h2><br><br>
+                            <p>* Nombre : Nombre del alumno <br><br> * Apellido : Apellido del alumno <br><br> * Edad: Edad del alumno <br><br> * Email: Email del alumno</p>
+                            <br><br>
 
-                            {{cursoformulario.as_p}}
+                            {{alumnosformulario.as_p}}
 
                             <input class="btn btn-primary" type="submit" value="Guardar">
 

@@ -49,17 +49,17 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h1 class="text-white mb-4">Seccion - Agregar Curso</h1>
+                        <h1 class="text-white mb-4">Seccion - Buscar Cursos</h1>
                         
-                        <form class="text-white mb-4" action="{% url 'CursoFormulario' %}" method = "POST"> {% csrf_token %}
+                        <form class="text-white mb-4" action="{% url 'BuscarCursos' %}" method = "GET"> {% csrf_token %}
 
-                            <h2 class="text-white mb-4" >Ingrese los datos del curso que serán guardados en la base de datos:</h2><br><br>
-                            <p>* Niveles : Basico - Intermedio - Avanzado <br><br> * Horarios : 9 - 11 - 15 - 17 - 19 <br><br> * Profesores: Nombre y apellido del profesor</p>
-                            <br><br><br><br>
+                            <h2 class="text-white mb-4" >Ingrese los datos del curso que desea buscar:</h2><br><br>
+                            <p>* Buscar por Niveles : Basico - Intermedio - Avanzado <br><br> * Buscar por Horarios : 9 - 11 - 15 - 17 - 19 <br><br> * Buscar por Profesores: Nombre y apellido del profesor</p>
+                            <br><br>
 
-                            {{cursoformulario.as_p}}
+                            <p>Busqueda: <input type="text" name="curso"></p>
 
-                            <input class="btn btn-primary" type="submit" value="Guardar">
+                            <input class="btn btn-primary" type="submit" name="Buscar">
 
                         </form>
                         

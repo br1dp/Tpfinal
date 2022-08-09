@@ -16,19 +16,6 @@ class Cursos(models.Model):
         verbose_name_plural = "Mis Cursos"
         ordering = ("nivel",)
 
-class Profesores(models.Model):
-
-    nombre = models.CharField(max_length=50)
-
-    apellido = models.CharField(max_length=50)
-
-    nivel = models.CharField(max_length=50)
-
-    email = models.EmailField( max_length=254)
-
-    def __str__(self) -> str:
-
-        return f"Nombre y apellido: {self.nombre} , {self.apellido} - Nivel: {self.nivel} - Email: {self.email}"
 
 class Alumnos(models.Model):
 
@@ -43,3 +30,19 @@ class Alumnos(models.Model):
     def  __str__(self) -> str:
 
         return f"Nombre y apellido: {self.nombre} , {self.apellido} - Edad: {self.edad} - Email: {self.email}"
+
+        
+class Profesores(models.Model):
+
+    nombre = models.CharField(max_length=50)
+
+    apellido = models.CharField(max_length=50)
+
+    nivel = models.CharField(max_length=50)
+
+    email = models.EmailField( max_length=254)
+
+    def __str__(self) -> str:
+
+        return f"Nombre y apellido: {self.nombre} , {self.apellido} - Nivel: {self.nivel} - Email: {self.email}"
+
