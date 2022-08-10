@@ -23,7 +23,7 @@ urlpatterns = [
     path('alumnosformulario/',alumnosformulario,name = 'AlumnosFormulario'),
     path('busquedaalumnos/',busquedaalumnos,name = 'BusquedaAlumnos'),
     path('resultadoalumnos/',resultadoalumnos,name = 'ResultadoAlumnos'),
-    
+
     path('profesores/',profesores,name = 'Profesores'),
     path('profesoresformulario/',profesoresformulario,name = 'ProfesoresFormulario'),
     path('busquedaprofesores/',busquedaprofesores,name = 'BusquedaProfesores'),

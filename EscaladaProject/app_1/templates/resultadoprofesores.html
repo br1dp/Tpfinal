@@ -15,22 +15,21 @@
                             {% if nombres %}
 
                             <ul>
-
-                                
                                 {% for i in nombres %}
 
                                  <br>-> NOMBRE: {{i.nombre}} <br>  ->APELLIDO: {{i.apellido}} <br> ->NIVEL: {{i.nivel}} <br> ->CONTACTO: {{i.email}} <br><br><br>
                                  
-                                
                                 {% endfor %}
                                 
-                                <a class="btn btn-primary" href="{% url 'Profesores' %}">VOLVER</a>
+                                <a class="btn btn-primary" href="{% url 'BusquedaProfesores' %}">Volver Atrás</a>
+                                <a class="btn btn-primary" href="{% url 'Profesores' %}">Volver a Profesores</a>
                             </ul>
                                 {% else %}
 
                                 <h4>NO SE ENCONTRARON LOS DATOS</h4>
-
-                                <a class="btn btn-primary" href="{% url 'Profesores' %}">VOLVER A PROFESORES</a>
+                                
+                                <a class="btn btn-primary" href="{% url 'BusquedaProfesores' %}">Volver Atrás</a>
+                                <a class="btn btn-primary" href="{% url 'Profesores' %}">Volver a Profesores</a>
 
                             {% endif %}
                              

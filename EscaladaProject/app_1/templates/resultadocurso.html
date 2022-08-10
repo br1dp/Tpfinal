@@ -12,21 +12,23 @@
                         <h1 class="text-white mb-4" >Resultado de la busqueda por niveles: {{nivel}}</h1><br><br>
 
                             {% if niveles %}
-
-                            <ul>
-
+                            
+                                </tr>
                                 {% for i in niveles %}
 
                                  -> NIVEL: {{i.nivel}} <br>  PROFESOR: {{i.profesor}} <br> HORARIO: {{i.horario}} hs. <br><br><br>
-                                 
+                                
                                 {% endfor %}
-                                <a class="btn btn-primary" href="{% url 'Cursos' %}">VOLVER</a>
-                            </ul>
+                                
+                                 <a class="btn btn-primary" href="{% url 'BuscarCursos' %}">Volver Atrás</a>
+                                 <a class="btn btn-primary" href="{% url 'Cursos' %}">Volver A Cursos</a>
+                            
                                 {% else %}
 
                                 <h4>NO SE ENCONTRARON LOS DATOS</h4>
 
-                                <a class="btn btn-primary" href="{% url 'Cursos' %}">VOLVER A CURSOS</a>
+                                <a class="btn btn-primary" href="{% url 'BuscarCursos' %}">Volver Atrás</a>
+                                <a class="btn btn-primary" href="{% url 'Cursos' %}">Volver a Cursos</a>
 
                             {% endif %}
                         

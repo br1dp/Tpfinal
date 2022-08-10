@@ -18,13 +18,15 @@
                                  <br> ->NOMBRE: {{i.nombre}} <br>  ->APELLIDO: {{i.apellido}}  <br> ->CONTACTO: {{i.email}}<br><br><br>
                                  
                                  {% endfor %} 
-                                  
-                                 <a class="btn btn-primary" href="{% url 'Alumnos' %}">VOLVER</a>
+                                 <a class="btn btn-primary" href="{% url 'BusquedaAlumnos' %}">Volver Atrás</a>
+                                 <a class="btn btn-primary" href="{% url 'Alumnos' %}">Volver a alumnos</a>
                             {% else %}
 
                                 <h4>NO SE ENCONTRARON LOS DATOS</h4>
 
-                                <a class="btn btn-primary" href="{% url 'Alumnos' %}">VOLVER A ALUMNOS</a>
+                                <a class="btn btn-primary" href="{% url 'BusquedaAlumnos' %}">Volver Atrás</a>
+                                <a class="btn btn-primary" href="{% url 'Alumnos' %}">Volver a alumnos</a>
+
 
                             {% endif %}
                     </div>
