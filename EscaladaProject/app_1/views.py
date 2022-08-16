@@ -40,7 +40,7 @@ def cursoformulario(request):
             
             data = cursoformulario.cleaned_data
         
-        curso = Cursos(nivel = data["nivel"], horario = data["horario"],profesor = data ["profesor"])
+        curso = Cursos(nivel = data["nivel"], dia = data["dia"], horario = data["horario"],profesor = data ["profesor"])
 
         curso.save()
 

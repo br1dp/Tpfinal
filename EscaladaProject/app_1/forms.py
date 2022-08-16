@@ -4,7 +4,7 @@ class CursoFormulario(forms.Form):
 
     nivel = forms.CharField()
 
-    dia = forms.IntegerField()
+    dia = forms.CharField()
 
     horario = forms.IntegerField()
 
