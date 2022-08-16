@@ -1,0 +1,34 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+<section class="about-section text-center" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="text-white mb-4"> <h1 style="color: rgb(160, 150, 150)">Nuestros cursos</h1>
+              <br><br><br>
+                
+              <ul>
+
+              <table class="table"> 
+                <tr> 
+                  <th scope="col" style="color: white"> Dia / Hora</th> 
+                  <th scope="col" style="color: white">  Nivel </th> 
+                  <th scope="col" style="color: white">  Profes </th> 
+                </tr> 
+                {% for curso in tabla_cursos %} 
+                <tr> 
+                  <td style="color: white">{{curso.dia}} / {{curso.horario}} hs. </td> 
+                  <td style="color: rgb(38, 167, 167)">{{curso.nivel}}</td> 
+                  <td style="color: orange">{{curso.profesor}}</td> 
+                </tr> {% endfor %} </table>
+
+              </ul> 
+            </div> 
+        </div>
+        <img class="img-fluid" src="{% static 'assets/img/montaña1.png' %}" alt="..." />
+    </div>
+</section>
+
+{% endblock bloqueQueCambia %}

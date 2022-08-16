@@ -12,7 +12,7 @@
                         <form class="text-white mb-4" action="{% url 'CursoFormulario' %}" method = "POST"> {% csrf_token %}
 
                             <h2 class="text-white mb-4" >Ingrese los datos del curso que serán guardados en la base de datos:</h2><br><br>
-                            <p>* NIVELES : Basico - Intermedio - Avanzado <br><br> * HORARIOS : 9 - 11 - 15 - 17 - 19 <br><br> * PROFESIORES: Nombre y apellido del profesor</p>
+                            <p>* NIVELES : Basico - Intermedio - Avanzado <br><br> * HORARIOS : 9 - 11 - 15 - 17 - 19 <br><br> * PROFESORES: Nombre y apellido del profesor</p>
                             <br><br><br><br>
 
                             {{cursoformulario.as_p}}

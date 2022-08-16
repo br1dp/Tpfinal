@@ -40,7 +40,7 @@ def cursoformulario(request):
             
             data = cursoformulario.cleaned_data
         
-        curso = Cursos(nivel = data["nivel"],horario = data["horario"],profesor = data ["profesor"])
+        curso = Cursos(nivel = data["nivel"], horario = data["horario"],profesor = data ["profesor"])
 
         curso.save()
 
@@ -91,7 +91,7 @@ def profesoresformulario(request):
             
             data = profesoresformulario.cleaned_data
         
-        profesor = Profesores(nombre = data["nombre"],apellido = data["apellido"],nivel = data ["nivel"],email = data ["email"])
+        profesor = Profesores(nombre = data["nombre"],apellido = data["apellido"], cursos = data ["curso"],email = data ["email"])
 
         profesor.save()
 
@@ -115,7 +115,7 @@ def resultadocursos(request):
         nivel = request.GET['nivel']
 
         if nivel != "":
-          niveles = Cursos.objects.filter( Q(nivel__icontains = nivel) | Q(profesor__icontains = nivel) | Q (horario__icontains = nivel) ).values()
+          niveles = Cursos.objects.filter( Q(nivel__icontains = nivel) | Q (dia__icontains = nivel) | Q (horario__icontains = nivel) | Q(profesor__icontains = nivel) ).values()
 
           return render(request,'resultadocurso.html',{'niveles':niveles})
 
@@ -149,3 +149,8 @@ def resultadoprofesores(request):
         nombres = Profesores.objects.filter(nombre__icontains = nombre)
 
         return render (request,'resultadoprofesores.html',{'nombres':nombres,'nombre':nombre})
+
+def tabla_cursos(request):
+
+    lista = Cursos.objects.all()
+    return render (request, 'tablacursos.html',{"tabla_cursos": lista})

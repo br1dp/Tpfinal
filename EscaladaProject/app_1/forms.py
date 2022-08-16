@@ -4,9 +4,12 @@ class CursoFormulario(forms.Form):
 
     nivel = forms.CharField()
 
+    dia = forms.IntegerField()
+
     horario = forms.IntegerField()
 
     profesor = forms.CharField()
+    
 
 class AlumnosFormulario(forms.Form):
 
@@ -25,6 +28,6 @@ class ProfesoresFormulario(forms.Form):
 
     apellido = forms.CharField()
 
-    nivel = forms.CharField()
+    curso = forms.CharField()
 
     email = forms.EmailField()
