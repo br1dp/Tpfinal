@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from app_1.forms import ProfesoresFormulario
 from app_1.models import Profesores
@@ -104,17 +104,15 @@ def elimina_cursos(request, id):
     print("method:",request.method)
     print("request:",request.POST)
 
+    curso = Cursos.objects.get(id=id)
+
     if request.method == "POST":
+
+        return render(request,'eliminarcurso.html', {'curso':curso})
         
-        curso = Cursos.objects.get(id=id)
+    curso.delete()
 
-        curso.delete()
-
-        cursos = Cursos.objects.all()
-
-        contexto = {"cursos": cursos}
-
-        return render(request,'tablacursos.html', contexto)
+    return redirect ('TablaCursos')
 
 
 def alumnosformulario(request):
@@ -155,7 +153,7 @@ def profesoresformulario(request):
             
             data = profesoresformulario.cleaned_data
         
-        profesor = Profesores(nombre = data["nombre"],apellido = data["apellido"], cursos = data ["curso"],email = data ["email"])
+        profesor = Profesores(nombre = data["nombre"],apellido = data["apellido"], email = data ["email"])
 
         profesor.save()
 

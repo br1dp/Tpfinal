@@ -9,15 +9,17 @@
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
                         <h2 class="text-white mb-4">Sección - Cursos</h2>
-                        <p> <a class="btn btn-primary" href="{% url 'TablaCursos' %}">VER TODOS LOS CURSOS</a> </p>
+                        
                         <p class="text-white-50">
                             <br>
-                            En ésta seccion usted podrá: <br><br><br> 1) Buscar los cursos del club <br><br><br> 2) Agregar cursos al club
+                            En ésta seccion usted podrá: <br><br><br> 1) Buscar los cursos del club <br><br><br> 2) Agregar cursos al club <br><br><br> 3) Ver la tabla de todos los cursos actuales
                             
                             <br><br><br>
                             
                             <a class="btn btn-primary" href="{% url 'CursoFormulario' %}">Agregar cursos</a>
-                            <a class="btn btn-primary" href="{% url 'BuscarCursos' %}">Buscar cursos</a> <br><br>
+                            <a class="btn btn-primary" href="{% url 'BuscarCursos' %}">Buscar cursos</a> 
+                            <a class="btn btn-primary" href="{% url 'TablaCursos' %}">Ver todos los cursos</a> </p><br><br>
+
                             
                         </p>
                     </div>

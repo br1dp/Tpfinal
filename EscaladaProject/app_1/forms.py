@@ -28,6 +28,4 @@ class ProfesoresFormulario(forms.Form):
 
     apellido = forms.CharField()
 
-    curso = forms.CharField()
-
     email = forms.EmailField()

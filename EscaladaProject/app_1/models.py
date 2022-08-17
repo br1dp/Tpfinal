@@ -6,11 +6,11 @@ class Cursos(models.Model):
     nivel = models.CharField( max_length=50)
 
     dias = [
-        ('1-Lunes','1-Lunes'), 
-        ('2-Martes','2-Martes'),
-        ('3-Miércoles','3-Miércoles'), 
-        ('4-Jueves','4-Jueves'), 
-        ('5-Viernes','5-Viernes'),
+        ('Lunes','Lunes'), 
+        ('Martes','Martes'),
+        ('Miércoles','Miércoles'), 
+        ('Jueves','Jueves'), 
+        ('Viernes','Viernes'),
     ]
     dia = models.CharField(max_length=20, choices=dias, default='Lunes')
 
@@ -31,8 +31,6 @@ class Profesores(models.Model):
     nombre = models.CharField(max_length=50)
 
     apellido = models.CharField(max_length=50)
-
-    cursos = models.ForeignKey(Cursos, null=False, blank=False, on_delete=models.CASCADE, default=1)
 
     email = models.EmailField( max_length=254)
 
