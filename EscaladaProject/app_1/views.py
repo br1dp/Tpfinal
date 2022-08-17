@@ -15,17 +15,21 @@ def inicio (self):
 
     return render (self,'inicio.html')
 
+
 def cursos(self):
 
     return render(self,"cursos.html")
+
 
 def alumnos(self):
 
     return render(self,"alumnos.html")
 
+
 def profesores(self):
 
     return render(self,"profesores.html")
+
 
 def cursoformulario(request):
 
@@ -51,6 +55,66 @@ def cursoformulario(request):
         cursoformulario = CursoFormulario()
     
     return render(request,'cursoformulario.html',{'cursoformulario':cursoformulario})
+
+def tabla_cursos(request):
+
+    lista = Cursos.objects.all()
+    return render (request, 'tablacursos.html',{"tabla_cursos": lista})
+
+
+def edita_cursos(request, id):
+    
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    curso = Cursos.objects.get(id=id)
+
+    if request.method == "POST":
+
+        cursoformulario = CursoFormulario(request.POST)
+
+        if cursoformulario.is_valid():
+            
+            data = cursoformulario.cleaned_data
+        
+            curso.nivel = data["nivel"]
+            curso.dia = data["dia"]
+            curso.horario = data["horario"]
+            curso.profesor = data["profesor"]
+
+        curso.save()
+
+        return render(request,'cursos.html')
+
+    else:
+
+        cursoformulario = CursoFormulario(initial = {
+            "nivel": curso.nivel,
+            "dia": curso.dia,
+            "horario": curso.horario,
+            "profesor": curso.profesor,
+        })
+    
+    return render(request,'editarcursos.html',{'cursoformulario':cursoformulario, 'id':curso.id})
+
+   
+
+def elimina_cursos(request, id):
+
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    if request.method == "POST":
+        
+        curso = Cursos.objects.get(id=id)
+
+        curso.delete()
+
+        cursos = Cursos.objects.all()
+
+        contexto = {"cursos": cursos}
+
+        return render(request,'tablacursos.html', contexto)
 
 
 def alumnosformulario(request):
@@ -136,9 +200,11 @@ def resultadoalumnos(request):
 
         return render (request,'resultadoalumnos.html',{'nombres':nombres,'nombre':nombre})
 
+
 def busquedaprofesores(request):
 
     return render(request,'busquedaprofesores.html')
+
 
 def resultadoprofesores(request):
 
@@ -150,7 +216,4 @@ def resultadoprofesores(request):
 
         return render (request,'resultadoprofesores.html',{'nombres':nombres,'nombre':nombre})
 
-def tabla_cursos(request):
 
-    lista = Cursos.objects.all()
-    return render (request, 'tablacursos.html',{"tabla_cursos": lista})

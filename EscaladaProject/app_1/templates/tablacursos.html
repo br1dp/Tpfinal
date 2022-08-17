@@ -7,8 +7,7 @@
     <div class="container px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="text-white mb-4"> <h1 style="color: rgb(160, 150, 150)">Nuestros cursos</h1>
-              <br><br><br>
-                
+              <br><br>
               <ul>
 
               <table class="table"> 
@@ -16,16 +15,30 @@
                   <th scope="col" style="color: white"> Dia / Hora</th> 
                   <th scope="col" style="color: white">  Nivel </th> 
                   <th scope="col" style="color: white">  Profes </th> 
+                  <th scope="col" style="color: white">  Acciones  </th>
+                  <th scope="col" style="color: white">  Eliminar </th>
                 </tr> 
                 {% for curso in tabla_cursos %} 
                 <tr> 
+
                   <td style="color: white">{{curso.dia}} / {{curso.horario}} hs. </td> 
                   <td style="color: rgb(38, 167, 167)">{{curso.nivel}}</td> 
                   <td style="color: orange">{{curso.profesor}}</td> 
+                  <td>
+                    <button class="navbar-toggler navbar-toggler-right">
+                     <a style="color: rgb(0, 255, 179)" href="{% url 'EditarCursos' curso.id %}"> Editar </a>
+                  </td>
+                  <td>
+                    </button> 
+                     <form action= "{% url 'EliminaCursos' curso.id %}" method="POST"> {% csrf_token %}
+                      <button type="submit" class="navbar-toggler navbar-toggler-right" style="color: red"> Eliminar </button>
+                     </form>
+                  </td> 
+
                 </tr> {% endfor %} </table>
 
                 <a class="btn btn-primary" href="{% url 'BuscarCursos' %}">Buscar Cursos</a>
-                <a class="btn btn-primary" href="{% url 'Cursos' %}">Volver a Sección Cursos</a>
+                <a class="btn btn-primary" href="{% url 'Cursos' %}">Ir a Sección Cursos</a>
 
               </ul> 
             </div> 
