@@ -11,6 +11,9 @@ from django.db.models import Q
 from app_1.forms import CursoFormulario
 from app_1.models import Cursos
 
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
+
 def inicio (self):
 
     return render (self,'inicio.html')
@@ -215,3 +218,33 @@ def resultadoprofesores(request):
         return render (request,'resultadoprofesores.html',{'nombres':nombres,'nombre':nombre})
 
 
+def loginView(request):
+
+    if request.method == 'POST':
+
+        loginFormulario = AuthenticationForm(request, data=request.POST)
+
+        if loginFormulario.is_valid(): 
+            
+            data = loginFormulario.cleaned_data 
+            
+            usuario = data["username"]
+
+            psw = data["password"]
+            
+            user = authenticate (username = usuario, password = psw)
+            
+            if user:
+              login[request, user]
+              return render (request, 'padre.html', {"mensaje": f'Bienvenido {usuario}, ha ingresado correctamente'})
+             
+            else:
+              return render (request, 'padre.html', {"mensaje": f'ERROR: Los datos ingresados no son válidos'})
+
+        return render (request, 'padre.html', {"mensaje": f'ERROR: El formulario no es válido'})
+    
+    else: 
+
+       loginFormulario = AuthenticationForm()
+
+    return render (request, 'login.html', {"loginFormulario": loginFormulario})

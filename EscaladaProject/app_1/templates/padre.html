@@ -27,9 +27,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#projects">Sobre la aplicacion</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'TablaCursos' %}">Ir a todos los cursos</a></li>                  
+                        <li class="nav-item"><a class="nav-link" href="{% url 'TablaCursos' %}">Ir a todos los cursos</a></li> 
+                        <li class="nav-item"><a class="nav-link" href="   "> Sobre la aplicacion</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'Login' %}"> Ingresar </a></li>                
                     </ul>
                 </div>
             </div>
@@ -39,9 +40,13 @@
             <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
                 <div class="d-flex justify-content-center">
                     <div class="text-center">
-                        <br><br><br><br><br>
+                        <br><br><br><br><br><br><br><br><br><br><br>
                         <h1 class="mx-auto my-0 text-uppercase">Club de escalada!</h1>
-                        <br><br><br><br><br>                                               
+                        <br><br><br><br><br><br><br>
+
+                        <h3 class="text" style="color: orange">{{mensaje}}</h3>
+                        
+                        <br><br><br>                                              
                     </div>
                 </div>
             </div>
@@ -53,7 +58,7 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-8">
-                        <h2 class="text-white mb-4">Bienvenidos a la aplicacion del club!</h2>
+                        <h2 class="text-white mb-4">Bienvenido a la aplicacion del club!</h2>
                         <p class="text-white-50">
                             A través de esta aplicacion podra conocer sobre el deporte y además poder administrar su club.
                             

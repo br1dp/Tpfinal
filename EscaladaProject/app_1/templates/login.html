@@ -1,0 +1,27 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+        <section class="about-section text-center" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                       <p> <h3 class="text-white mb-4">Por favor, complete los campos </h3><br>
+                        
+                          <form class="text-white mb-4" action="{% url 'Login' %}" method = "POST"> {% csrf_token %}
+
+                            {{loginFormulario.as_p}}
+
+                            <input class="btn btn-primary" type="submit" value="Iniciar Sesión">
+
+                          </form>
+                       </p>
+                        
+                    </div>
+                </div>
+                <img class="img-fluid" src="{% static 'assets/img/montaña1.png' %}" alt="..." />
+            </div>
+        </section>
+
+{% endblock bloqueQueCambia %}
