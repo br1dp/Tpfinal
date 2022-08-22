@@ -12,11 +12,14 @@ from app_1.views import alumnosformulario
 from app_1.views import tabla_cursos
 from app_1.views import alumnos, cursos, profesores, cursoformulario, profesoresformulario, elimina_cursos
 from app_1.views import inicio
+from django.contrib.auth.views import LogoutView
+
 
 urlpatterns = [
     path('',inicio,name = 'Inicio'),
     path('login/',loginView, name = 'Login'),
     path('registro/',register, name = 'Registro'),
+    path('logout/', LogoutView.as_view(template_name ="logout.html"), name = 'Logout'),
 
     path('cursos/',cursos,name = 'Cursos'),
     path('cursoformulario/',cursoformulario,name = 'CursoFormulario'),

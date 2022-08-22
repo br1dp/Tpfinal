@@ -14,6 +14,10 @@ from app_1.models import Cursos
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
+
 def inicio (self):
 
     return render (self,'inicio.html')
@@ -59,12 +63,15 @@ def cursoformulario(request):
     
     return render(request,'cursoformulario.html',{'cursoformulario':cursoformulario})
 
+
+
 def tabla_cursos(request):
 
     lista = Cursos.objects.all()
     return render (request, 'tablacursos.html',{"tabla_cursos": lista})
 
 
+@login_required
 def edita_cursos(request, id):
     
     print("method:",request.method)
@@ -100,8 +107,8 @@ def edita_cursos(request, id):
     
     return render(request,'editarcursos.html',{'cursoformulario':cursoformulario, 'id':curso.id})
 
-   
-
+@staff_member_required(login_url = '/app_1/')  
+@login_required
 def elimina_cursos(request, id):
 
     print("method:",request.method)
@@ -117,7 +124,7 @@ def elimina_cursos(request, id):
 
     return redirect ('TablaCursos')
 
-
+@login_required
 def alumnosformulario(request):
 
     print("method:",request.method)
@@ -143,6 +150,7 @@ def alumnosformulario(request):
     
     return render(request,'alumnosformulario.html',{'alumnosformulario':alumnosformulario})
 
+@login_required
 def profesoresformulario(request):
 
     print("method:",request.method)
@@ -187,9 +195,11 @@ def resultadocursos(request):
     niveles = Cursos.objects.all()
     return render(request, "alumnos.html",{"niveles": niveles})
 
+
 def busquedaalumnos(request):
 
     return render(request,'busquedaalumnos.html')
+
 
 def resultadoalumnos(request):
 
@@ -236,9 +246,9 @@ def loginView(request):
             
             if user:
 
-              login[request, user]
+              login(request, user)
 
-              return render(request, 'padre.html', {"mensaje": f'Bienvenido {usuario}, ha ingresado correctamente'})
+              return render(request, 'padre.html', {"mensaje": f'Bienvenido "{usuario}", ha iniciado sesión correctamente'})
              
             else:
                 
@@ -251,6 +261,7 @@ def loginView(request):
        loginFormulario = AuthenticationForm()
 
     return render (request, 'login.html', {"loginFormulario": loginFormulario})
+
 
 
 
