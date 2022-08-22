@@ -11,7 +11,7 @@ from django.db.models import Q
 from app_1.forms import CursoFormulario
 from app_1.models import Cursos
 
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 def inicio (self):
@@ -232,14 +232,17 @@ def loginView(request):
 
             psw = data["password"]
             
-            user = authenticate (username = usuario, password = psw)
+            user = authenticate(username = usuario, password = psw)
             
             if user:
+
               login[request, user]
-              return render (request, 'padre.html', {"mensaje": f'Bienvenido {usuario}, ha ingresado correctamente'})
+
+              return render(request, 'padre.html', {"mensaje": f'Bienvenido {usuario}, ha ingresado correctamente'})
              
             else:
-              return render (request, 'padre.html', {"mensaje": f'ERROR: Los datos ingresados no son válidos'})
+                
+              return render(request, 'padre.html', {"mensaje": f'ERROR: Los datos ingresados no son válidos'})
 
         return render (request, 'padre.html', {"mensaje": f'ERROR: El formulario no es válido'})
     
@@ -248,3 +251,24 @@ def loginView(request):
        loginFormulario = AuthenticationForm()
 
     return render (request, 'login.html', {"loginFormulario": loginFormulario})
+
+
+
+def register(request):
+
+    if request.method == 'POST':
+
+        formRegister = UserCreationForm(request.POST)
+
+        if formRegister.is_valid():
+
+         username = formRegister.cleaned_data["username"]
+
+         formRegister.save()
+
+         return render(request, 'padre.html', {"mensaje": f'El usuario "{username}", ha sido creado'})
+    
+    else: 
+        formRegister = UserCreationForm()
+
+    return render(request, "registro.html",  {"formRegister": formRegister})

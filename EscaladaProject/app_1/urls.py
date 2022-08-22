@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import edita_cursos, loginView
+from .views import edita_cursos, loginView, register
 
 from app_1.views import resultadoprofesores
 from app_1.views import busquedaprofesores
@@ -15,7 +15,8 @@ from app_1.views import inicio
 
 urlpatterns = [
     path('',inicio,name = 'Inicio'),
-    path('login/',loginView,name = 'Login'),
+    path('login/',loginView, name = 'Login'),
+    path('registro/',register, name = 'Registro'),
 
     path('cursos/',cursos,name = 'Cursos'),
     path('cursoformulario/',cursoformulario,name = 'CursoFormulario'),
