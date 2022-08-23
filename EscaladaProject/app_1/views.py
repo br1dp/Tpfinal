@@ -283,3 +283,59 @@ def register(request):
         formRegister = UserCreationForm()
 
     return render(request, "registro.html",  {"formRegister": formRegister})
+
+
+def tabla_alumnos(request):
+
+    lista = Alumnos.objects.all()
+    return render (request, 'tablaalumnos.html',{"tabla_alumnos": lista})
+
+def edita_alumno(request, id):
+    
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    alumno = Alumnos.objects.get(id=id)
+
+    if request.method == "POST":
+
+        alumnoformulario = AlumnosFormulario(request.POST)
+
+        if alumnoformulario.is_valid():
+            
+            data = alumnoformulario.cleaned_data
+        
+            alumno.nombre = data["nombre"]
+            alumno.apellido = data["apellido"]
+            alumno.edad = data["edad"]
+            alumno.email = data["email"]
+
+        alumno.save()
+
+        return render(request,'alumnos.html')
+
+    else:
+
+        alumnoformulario = AlumnosFormulario(initial = {
+            "nombre": alumno.nombre,
+            "apellido": alumno.apellido,
+            "edad": alumno.edad,
+            "email": alumno.email,
+        })
+    
+    return render(request,'editaralumno.html',{'alumnoformulario':alumnoformulario, 'id':alumno.id})
+
+def elimina_alumno(request, id):
+
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    alumno = Alumnos.objects.get(id=id)
+
+    if request.method == "POST":
+
+        return render(request,'eliminaralumno.html', {'alumno':alumno})
+        
+    alumno.delete()
+
+    return redirect ('TablaAlumnos')
