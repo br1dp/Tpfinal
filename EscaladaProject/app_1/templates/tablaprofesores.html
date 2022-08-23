@@ -1,0 +1,50 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+<section class="about-section text-center" id="about">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="text-white mb-4"> <h1 style="color: rgb(160, 150, 150)">Nuestros profesores</h1>
+              <br><br>
+              <ul>
+
+              <table class="table"> 
+                <tr> 
+                  <th scope="col" style="color: white"> Nombre y apellido</th> 
+                  
+                  <th scope="col" style="color: white">  Email </th> 
+                  <th scope="col" style="color: white">  Acciones  </th>
+                  <th scope="col" style="color: white">  Eliminar </th>
+                </tr> 
+                {% for profesor in tabla_profesores %} 
+                <tr> 
+
+                  <td style="color: white">{{profesor.nombre}} {{profesor.apellido}} </td> 
+                  
+                  <td style="color: orange">{{profesor.email}}</td> 
+                  <td>
+                    <button class="navbar-toggler navbar-toggler-right">
+                     <a style="color: rgb(0, 255, 179)" href="{% url 'EditaProfesores' profesor.id %}"> Editar </a>
+                  </td>
+                  <td>
+                    </button> 
+                     <form action= "{% url 'EliminaProfesores' profesor.id %}" method="POST"> {% csrf_token %}
+                      <button type="submit" class="navbar-toggler navbar-toggler-right" style="color: red"> Eliminar </button>
+                     </form>
+                  </td> 
+
+                </tr> {% endfor %} </table>
+
+                <a class="btn btn-primary" href="{% url 'BusquedaProfesores' %}">Buscar Profesores</a>
+                <a class="btn btn-primary" href="{% url 'Profesores' %}">Ir a Sección Profesores</a>
+
+              </ul> 
+            </div> 
+        </div>
+        <img class="img-fluid" src="{% static 'assets/img/montaña1.png' %}" alt="..." />
+    </div>
+</section>
+
+{% endblock bloqueQueCambia %}

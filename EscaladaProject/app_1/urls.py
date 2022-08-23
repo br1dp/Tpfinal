@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import edita_alumno, edita_cursos, elimina_alumno, loginView, register, tabla_alumnos
+from .views import edita_alumno, edita_cursos, edita_profe, elimina_alumno, elimina_profesor,loginView, register, tabla_alumnos, tabla_profesores
 
 from app_1.views import resultadoprofesores
 from app_1.views import busquedaprofesores
@@ -42,4 +42,8 @@ urlpatterns = [
     path('profesoresformulario/',profesoresformulario,name = 'ProfesoresFormulario'),
     path('busquedaprofesores/',busquedaprofesores,name = 'BusquedaProfesores'),
     path('resultadoprofesores/',resultadoprofesores,name = 'ResultadoProfesores'),
+    path('tablaprofesores/',tabla_profesores,  name = 'TablaProfesores'),
+    path('editarprofesores/<int:id>',edita_profe , name = 'EditaProfesores'),
+    path('eliminaprofesores/<int:id>',elimina_profesor , name = 'EliminaProfesores'),
+
     ]

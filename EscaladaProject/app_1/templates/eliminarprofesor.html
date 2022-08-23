@@ -1,0 +1,28 @@
+{% extends 'padre.html' %}
+
+{% load static %}
+
+{% block bloqueQueCambia %}
+        
+        <section class="about-section text-left" id="about">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-white mb-4">¿Desea eliminar : Profesor {{profesor.nombre}} {{profesor.apellido}} ? </h2>
+
+                        <form method="POST"> 
+
+                            {% csrf_token %}
+                            <a class="btn btn-primary" href="{% url 'EliminaProfesores' profesor.id %}">SI</a>
+                            <a class="btn btn-primary" href="{% url 'TablaProfesores' %}">NO</a> 
+                        
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <img class="img-fluid" src="{% static 'assets/img/montaña1.png' %}" alt="..." />
+            </div>
+</section>
+{% endblock bloqueQueCambia %}
+
+    
