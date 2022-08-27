@@ -1,7 +1,11 @@
 from django.contrib import admin
 from django.urls import path
 <<<<<<< HEAD
+<<<<<<< HEAD
 from .views import agregar_avatar, edita_cursos, editar_perfil, loginView, register
+=======
+from .views import edita_alumno, edita_cursos, edita_profe, elimina_alumno, elimina_profesor,loginView, register, tabla_alumnos, tabla_profesores
+>>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
 =======
 from .views import edita_alumno, edita_cursos, edita_profe, elimina_alumno, elimina_profesor,loginView, register, tabla_alumnos, tabla_profesores
 >>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
