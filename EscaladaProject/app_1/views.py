@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+from app_1.forms import AvatarFormulario
+from app_1.models import Avatar
 
 from app_1.forms import ProfesoresFormulario
 from app_1.models import Profesores
@@ -8,19 +10,24 @@ from app_1.models import Alumnos
 
 from django.db.models import Q
 
-from app_1.forms import CursoFormulario
+from app_1.forms import CursoFormulario, UserEditForm
 from app_1.models import Cursos
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-def inicio (self):
+@login_required
+def inicio (request):
 
-    return render (self,'inicio.html')
+    try:
+        avatar = Avatar.objects.get(user=request.user.id)
+        return render (request,'inicio.html', {"url": avatar.imagen.url})
+    except:
+         return render (request,'inicio.html')
 
 
 def cursos(self):
@@ -254,7 +261,7 @@ def loginView(request):
                 
               return render(request, 'padre.html', {"mensaje": f'ERROR: Los datos ingresados no son válidos'})
 
-        return render (request, 'padre.html', {"mensaje": f'ERROR: El formulario no es válido'})
+        return render (request, 'padre.html', {"mensaje": f'ERROR: Los datos ingresados no son válidos'})
     
     else: 
 
@@ -283,3 +290,60 @@ def register(request):
         formRegister = UserCreationForm()
 
     return render(request, "registro.html",  {"formRegister": formRegister})
+
+
+@login_required
+def editar_perfil(request):
+
+    print('method:', request.method)
+    print('post:', request.method)
+
+    usuario = request.user
+
+    if request.method == 'POST':
+
+        miFormulario = UserEditForm(request.POST, instance=request.user)
+
+        if miFormulario.is_valid(): 
+            
+            data = miFormulario.cleaned_data 
+            
+            usuario.first_name = data["first_name"]
+            usuario.last_name = data["last_name"]
+            usuario.email = data["email"]
+            
+            usuario.save()
+            
+            return render (request, 'inicio.html', {"mensaje": 'Se guardaron los cambios'})
+    
+    else: 
+
+       miFormulario = UserEditForm(instance = request.user)
+
+    return render (request, 'editarPerfil.html', {"miFormulario": miFormulario})
+
+
+def agregar_avatar(request):
+
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    if request.method == "POST":
+
+        avatarFormulario = AvatarFormulario(request.POST, request.FILES)
+
+        if avatarFormulario.is_valid():
+            
+            data = avatarFormulario.cleaned_data
+            
+            avatar = Avatar(user=request.user , imagen=data['imagen'])
+            
+            avatar.save()
+
+        return render(request,'inicio.html', {"mensaje": "Avatar cargado.."})
+
+    else:
+
+        avatarFormulario = AvatarFormulario()
+    
+    return render(request,'cargarAvatar.html',{'avatarFormulario':avatarFormulario})

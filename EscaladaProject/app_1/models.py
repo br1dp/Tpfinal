@@ -1,4 +1,7 @@
+from distutils.command.upload import upload
 from django.db import models
+
+from django.contrib.auth.models import User
 
 
 class Cursos(models.Model):
@@ -35,7 +38,6 @@ class Profesores(models.Model):
 
 
 
-
 class Alumnos(models.Model):
 
     nombre = models.CharField(max_length=50)
@@ -49,4 +51,10 @@ class Alumnos(models.Model):
     def  __str__(self) -> str:
 
         return f"Nombre y apellido: {self.nombre} , {self.apellido} - Edad: {self.edad} - Email: {self.email}"
+
+
+class Avatar(models.Model):
+    
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to = 'avatares', blank=True, null=True)
 

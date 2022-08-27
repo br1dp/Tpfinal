@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import edita_cursos, loginView, register
+from .views import agregar_avatar, edita_cursos, editar_perfil, loginView, register
 
 from app_1.views import resultadoprofesores
 from app_1.views import busquedaprofesores
@@ -13,13 +13,15 @@ from app_1.views import tabla_cursos
 from app_1.views import alumnos, cursos, profesores, cursoformulario, profesoresformulario, elimina_cursos
 from app_1.views import inicio
 from django.contrib.auth.views import LogoutView
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 urlpatterns = [
     path('',inicio,name = 'Inicio'),
     path('login/',loginView, name = 'Login'),
     path('registro/',register, name = 'Registro'),
     path('logout/', LogoutView.as_view(template_name ="logout.html"), name = 'Logout'),
+    path('editar-perfil/',editar_perfil, name = 'EditarPerfil'),
+    path('cargar-avatar/', agregar_avatar, name = 'CargarAvatar'),
 
     path('cursos/',cursos,name = 'Cursos'),
     path('cursoformulario/',cursoformulario,name = 'CursoFormulario'),
@@ -40,3 +42,4 @@ urlpatterns = [
     path('busquedaprofesores/',busquedaprofesores,name = 'BusquedaProfesores'),
     path('resultadoprofesores/',resultadoprofesores,name = 'ResultadoProfesores'),
     ]
+
