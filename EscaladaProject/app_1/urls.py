@@ -1,6 +1,10 @@
 from django.contrib import admin
 from django.urls import path
+<<<<<<< HEAD
 from .views import agregar_avatar, edita_cursos, editar_perfil, loginView, register
+=======
+from .views import edita_alumno, edita_cursos, edita_profe, elimina_alumno, elimina_profesor,loginView, register, tabla_alumnos, tabla_profesores
+>>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
 
 from app_1.views import resultadoprofesores
 from app_1.views import busquedaprofesores
@@ -36,10 +40,17 @@ urlpatterns = [
     path('alumnosformulario/',alumnosformulario,name = 'AlumnosFormulario'),
     path('busquedaalumnos/',busquedaalumnos,name = 'BusquedaAlumnos'),
     path('resultadoalumnos/',resultadoalumnos,name = 'ResultadoAlumnos'),
+    path('tablaalumnos/',tabla_alumnos,  name = 'TablaAlumnos'),
+    path('editaralumnos/<int:id>',edita_alumno , name = 'EditaAlumnos'),
+    path('eliminaalumnos/<int:id>',elimina_alumno , name = 'EliminaAlumnos'),
 
     path('profesores/',profesores,name = 'Profesores'),
     path('profesoresformulario/',profesoresformulario,name = 'ProfesoresFormulario'),
     path('busquedaprofesores/',busquedaprofesores,name = 'BusquedaProfesores'),
     path('resultadoprofesores/',resultadoprofesores,name = 'ResultadoProfesores'),
+    path('tablaprofesores/',tabla_profesores,  name = 'TablaProfesores'),
+    path('editarprofesores/<int:id>',edita_profe , name = 'EditaProfesores'),
+    path('eliminaprofesores/<int:id>',elimina_profesor , name = 'EliminaProfesores'),
+
     ]
 

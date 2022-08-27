@@ -292,6 +292,7 @@ def register(request):
     return render(request, "registro.html",  {"formRegister": formRegister})
 
 
+<<<<<<< HEAD
 @login_required
 def editar_perfil(request):
 
@@ -324,10 +325,54 @@ def editar_perfil(request):
 
 
 def agregar_avatar(request):
+=======
+def tabla_alumnos(request):
+
+    lista = Alumnos.objects.all()
+    return render (request, 'tablaalumnos.html',{"tabla_alumnos": lista})
+
+def edita_alumno(request, id):
+    
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    alumno = Alumnos.objects.get(id=id)
+
+    if request.method == "POST":
+
+        alumnoformulario = AlumnosFormulario(request.POST)
+
+        if alumnoformulario.is_valid():
+            
+            data = alumnoformulario.cleaned_data
+        
+            alumno.nombre = data["nombre"]
+            alumno.apellido = data["apellido"]
+            alumno.edad = data["edad"]
+            alumno.email = data["email"]
+
+        alumno.save()
+
+        return render(request,'alumnos.html')
+
+    else:
+
+        alumnoformulario = AlumnosFormulario(initial = {
+            "nombre": alumno.nombre,
+            "apellido": alumno.apellido,
+            "edad": alumno.edad,
+            "email": alumno.email,
+        })
+    
+    return render(request,'editaralumno.html',{'alumnoformulario':alumnoformulario, 'id':alumno.id})
+
+def elimina_alumno(request, id):
+>>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
 
     print("method:",request.method)
     print("request:",request.POST)
 
+<<<<<<< HEAD
     if request.method == "POST":
 
         avatarFormulario = AvatarFormulario(request.POST, request.FILES)
@@ -347,3 +392,67 @@ def agregar_avatar(request):
         avatarFormulario = AvatarFormulario()
     
     return render(request,'cargarAvatar.html',{'avatarFormulario':avatarFormulario})
+=======
+    alumno = Alumnos.objects.get(id=id)
+
+    if request.method == "POST":
+
+        return render(request,'eliminaralumno.html', {'alumno':alumno})
+        
+    alumno.delete()
+
+    return redirect ('TablaAlumnos')
+
+def tabla_profesores(request):
+
+    lista = Profesores.objects.all()
+    return render (request, 'tablaprofesores.html',{"tabla_profesores": lista})
+
+def edita_profe(request, id):
+    
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    profesor = Profesores.objects.get(id=id)
+
+    if request.method == "POST":
+
+        profesorformulario = ProfesoresFormulario(request.POST)
+
+        if profesorformulario.is_valid():
+            
+            data = profesorformulario.cleaned_data
+        
+            profesor.nombre = data["nombre"]
+            profesor.apellido = data["apellido"]
+            profesor.email = data["email"]
+
+        profesor.save()
+
+        return render(request,'profesores.html')
+
+    else:
+
+        profesorformulario = ProfesoresFormulario(initial = {
+            "nombre": profesor.nombre,
+            "apellido": profesor.apellido,
+            "email": profesor.email,
+        })
+    
+    return render(request,'editarprofesor.html',{'profesorformulario':profesorformulario, 'id':profesor.id})
+
+def elimina_profesor(request, id):
+
+    print("method:",request.method)
+    print("request:",request.POST)
+
+    profesor = Profesores.objects.get(id=id)
+
+    if request.method == "POST":
+
+        return render(request,'eliminarprofesor.html', {'profesor':profesor})
+        
+    profesor.delete()
+
+    return redirect ('TablaProfesores')
+>>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
