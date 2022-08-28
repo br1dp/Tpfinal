@@ -20,7 +20,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
-@login_required
+
 def inicio (request):
 
     try:
@@ -292,8 +292,7 @@ def register(request):
     return render(request, "registro.html",  {"formRegister": formRegister})
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 @login_required
 def editar_perfil(request):
 
@@ -326,9 +325,27 @@ def editar_perfil(request):
 
 
 def agregar_avatar(request):
-=======
-=======
->>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
+
+    if request.method == "POST":
+
+        avatarFormulario = AvatarFormulario(request.POST, request.FILES)
+
+        if avatarFormulario.is_valid():
+            
+            data = avatarFormulario.cleaned_data
+            
+            avatar = Avatar(user=request.user , imagen=data['imagen'])
+            
+            avatar.save()
+
+        return render(request,'inicio.html', {"mensaje": "Avatar cargado.."})
+
+    else:
+
+        avatarFormulario = AvatarFormulario()
+    
+    return render(request,'cargarAvatar.html',{'avatarFormulario':avatarFormulario})
+
 def tabla_alumnos(request):
 
     lista = Alumnos.objects.all()
@@ -370,38 +387,11 @@ def edita_alumno(request, id):
     return render(request,'editaralumno.html',{'alumnoformulario':alumnoformulario, 'id':alumno.id})
 
 def elimina_alumno(request, id):
-<<<<<<< HEAD
->>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
-=======
->>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
+
 
     print("method:",request.method)
     print("request:",request.POST)
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if request.method == "POST":
-
-        avatarFormulario = AvatarFormulario(request.POST, request.FILES)
-
-        if avatarFormulario.is_valid():
-            
-            data = avatarFormulario.cleaned_data
-            
-            avatar = Avatar(user=request.user , imagen=data['imagen'])
-            
-            avatar.save()
-
-        return render(request,'inicio.html', {"mensaje": "Avatar cargado.."})
-
-    else:
-
-        avatarFormulario = AvatarFormulario()
-    
-    return render(request,'cargarAvatar.html',{'avatarFormulario':avatarFormulario})
-=======
-=======
->>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
     alumno = Alumnos.objects.get(id=id)
 
     if request.method == "POST":
@@ -463,9 +453,8 @@ def elimina_profesor(request, id):
         
     profesor.delete()
 
-<<<<<<< HEAD
+
     return redirect ('TablaProfesores')
->>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
-=======
-    return redirect ('TablaProfesores')
->>>>>>> e72a8bac4333369d0616dbc0ae289914830dc2ca
+
+    
+
