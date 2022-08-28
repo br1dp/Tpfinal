@@ -58,3 +58,6 @@ class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to = 'avatares', blank=True, null=True)
 
+    def __str__(self) -> str:
+        return f"user: {self.user}  / imagen: {self.imagen}"
+

@@ -44,7 +44,8 @@ def profesores(self):
 
     return render(self,"profesores.html")
 
-
+@login_required
+@staff_member_required (login_url = '/app_1/')
 def cursoformulario(request):
 
     print("method:",request.method)
@@ -79,6 +80,7 @@ def tabla_cursos(request):
 
 
 @login_required
+@staff_member_required (login_url = '/app_1/')
 def edita_cursos(request, id):
     
     print("method:",request.method)
@@ -323,7 +325,7 @@ def editar_perfil(request):
 
     return render (request, 'editarPerfil.html', {"miFormulario": miFormulario})
 
-
+@login_required
 def agregar_avatar(request):
 
     if request.method == "POST":
@@ -346,11 +348,13 @@ def agregar_avatar(request):
     
     return render(request,'cargarAvatar.html',{'avatarFormulario':avatarFormulario})
 
+
 def tabla_alumnos(request):
 
     lista = Alumnos.objects.all()
     return render (request, 'tablaalumnos.html',{"tabla_alumnos": lista})
 
+@login_required
 def edita_alumno(request, id):
     
     print("method:",request.method)
@@ -386,6 +390,7 @@ def edita_alumno(request, id):
     
     return render(request,'editaralumno.html',{'alumnoformulario':alumnoformulario, 'id':alumno.id})
 
+@login_required
 def elimina_alumno(request, id):
 
 
@@ -407,6 +412,8 @@ def tabla_profesores(request):
     lista = Profesores.objects.all()
     return render (request, 'tablaprofesores.html',{"tabla_profesores": lista})
 
+
+@login_required
 def edita_profe(request, id):
     
     print("method:",request.method)
@@ -439,7 +446,8 @@ def edita_profe(request, id):
         })
     
     return render(request,'editarprofesor.html',{'profesorformulario':profesorformulario, 'id':profesor.id})
-
+ 
+@login_required
 def elimina_profesor(request, id):
 
     print("method:",request.method)

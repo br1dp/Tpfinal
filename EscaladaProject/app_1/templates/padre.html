@@ -29,8 +29,6 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'TablaCursos' %}">Ir a todos los cursos</a></li> 
-                        <li class="nav-item"><a class="nav-link" href="{% url 'Inicio' %}"> Sobre la aplicacion</a></li>
-                        
                         
                         {% if user.is_authenticated  %}
                             
@@ -129,7 +127,11 @@
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
                                     <h4 class="text-white">Viajes a la roca!</h4>
-                                    <p class="mb-0 text-white-50">Podrá programar sus viajes con los alumnos a distintos lugares aptos para escalar!</p>
+                                    <p class="mb-0 text-white-50">Podrá programar sus viajes con los alumnos a distintos lugares aptos para escalar!</p><br><br><br>
+                                    <p class="text-white">CONTACTANOS </p>
+                                    <p class="mb-0 text-white-50">Tel: 3517348520 </p> 
+                                    <p class="mb-0 text-white-50">email: clubescalada@app.com </p>
+                                    <p class="mb-0 text-white-50">¡Proximamente en redes sociales!</p>
                                     <hr class="d-none d-lg-block mb-0 me-0" />
                                 </div>
                             </div>
